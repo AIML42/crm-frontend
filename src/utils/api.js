@@ -1,4 +1,4 @@
-const BASE_URL = 'https://crm-backend-h4d5.onrender.com'
+const BASE_URL = 'https://crm-backend-h4d5.onrender.com/api'
 
 const api = {
   post: async (endpoint, data) => {
