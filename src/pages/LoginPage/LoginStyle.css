@@ -1,0 +1,149 @@
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} */
+
+/* body {
+  overflow-x: hidden;
+} */
+
+.mainLogin {
+  display: flex;
+  align-items: stretch;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.loginImage img {
+  object-fit: cover;
+  height: 100vh;
+  width: 100%;
+}
+
+.login {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background-color: #fff;
+  padding: 40px 20px;
+}
+
+.login .logo {
+  font-size: 24px;
+  color: #184E7F;
+  font-weight: bold;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 40px;
+  width: 100%;
+  padding-right: 600px;
+}
+
+.login-title {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 30px;
+  width: 100%;
+  max-width: 400px;
+  text-align: left;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 400px;
+}
+
+
+.login-field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.login-label {
+  display: block;
+  padding-bottom: 8px;
+  color: #666666;
+  text-align: left;
+}
+
+.login-field input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.login-field input:disabled {
+  background-color: #f0f0f0;
+}
+
+.login-button {
+  background-color: #1A73E8;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.login-button:disabled {
+  background-color: #E0E0E0;
+  cursor: not-allowed;
+}
+
+.login-forgot-link {
+  padding-top: 10px;
+  text-decoration: underline;
+  color: #1A73E8;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+  display: block;
+}
+
+.login-error {
+  color: #FF0000;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.login-signup {
+  padding-top: 10px;
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.login-signup a {
+  color: #1A73E8;
+  text-decoration: underline;
+}
+
+.login-signup a:hover {
+  text-decoration: underline;
+}
+
+.login-footer {
+  padding-top: 30px;
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+  margin-top: 20px;
+  max-width: 400px;
+}
+

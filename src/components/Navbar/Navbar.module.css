@@ -1,0 +1,55 @@
+.navbar {
+    background-color: #f8fbfe;
+    padding: 6px 0;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    font-size: 24px;
+    color: #184E7F;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .icon{
+    font-size: 50px;
+  }
+  
+  .links {
+    display: flex;
+    gap: 24px;
+  }
+  
+  .link {
+    font-size: 16px;
+    color: var(--primary);
+    transition: color 0.2s;
+  }
+  
+  .link:hover {
+    color: #0056b3;
+  }
+
+  .login{
+    color: #36364A;
+    padding: 9px;
+  }
+
+  .signup{
+    background-color: #244779;
+    color: var(--white);
+    border-radius: 5px;
+    padding: 9px;
+
+  }

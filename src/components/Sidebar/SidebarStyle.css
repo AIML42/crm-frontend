@@ -1,0 +1,49 @@
+.sidebar {
+    width: 70px;
+    background-color: #fafbfc;
+    border-right: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .sidebar img{
+    height: 20px;
+    width: 20px;
+  }
+  
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sidebar-nav svg{
+    color: #424242;
+  }
+
+  .sidebar-nav .inner-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .sidebar-nav p{
+    font-size: 10px;
+    color: #424242;
+    text-align: center;
+  }
+
+  .sidebar .logo{
+    color: #184E7F;
+  }
+  
+  .sidebar-nav .active {
+    color: #1A73E8;
+  }

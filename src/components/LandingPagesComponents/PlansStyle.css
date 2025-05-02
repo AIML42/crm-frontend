@@ -1,0 +1,75 @@
+.plans{
+    text-align: center;
+    padding-top: 35vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #f8fbfe;
+    gap: 25px;
+    color: #30404D;
+    padding-bottom: 30px;
+}
+
+.planDetails{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:30px;
+    padding-top: 20px;
+}
+
+.planDetails .planOne{
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.planDetails .planTwo{
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.planPoints{
+    margin-top: 15px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 10px;
+}
+
+.price{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.price h4{
+    color: #98A8B3;
+}
+.price h1{
+    color: #3A7ABD;
+}
+
+.planDetails button{
+    margin-top: 20px;
+    color: #244779;
+    border-radius: 10px;
+    padding: 5px 10px;
+    border: 1px solid #244779;
+    width: 90%;
+    text-align: center;
+}

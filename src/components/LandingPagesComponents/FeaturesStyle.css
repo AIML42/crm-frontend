@@ -1,0 +1,42 @@
+.features{
+    text-align: center;
+    height: 100vh;
+    padding-top: 15vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #f8fbfe;
+    gap: 25px;
+}
+
+/* .features h1 p{
+    padding-top: 25px;
+} */
+
+.features .featuresDetails{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 10px;
+    width: 80%;
+    margin-top: vh;
+    border-radius: 15px;
+    margin: 0 10vw;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.featuresDetails .image{
+    width: 475px;
+    height: 439px;
+}
+
+.featuresDetails .text{
+    text-align: start;
+    padding-left: 15px;
+}
+
+.featuresDetails .text p{
+    padding-bottom: 20px;
+}
