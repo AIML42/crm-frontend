@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000/api'
+const BASE_URL = 'https://crm-backend-h4d5.onrender.com'
 
 const api = {
   post: async (endpoint, data) => {
