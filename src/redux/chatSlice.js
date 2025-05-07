@@ -29,15 +29,6 @@ export const sendMessage = createAsyncThunk('chat/sendMessage', async ({ chatId,
   }
 })
 
-export const fetchTeamMembers = createAsyncThunk('chat/fetchTeamMembers', async (_, { rejectWithValue }) => {
-  try {
-    const response = await api.get('/team')
-    return response.members
-    
-  } catch (error) {
-    return rejectWithValue(error.response.data.message)
-  }
-})
 
 export const updateTicket = createAsyncThunk('chat/updateTicket', async ({ ticketId, status, assignedTo }, { rejectWithValue }) => {
   try {
@@ -66,12 +57,21 @@ export const updateChatbotConfig = createAsyncThunk('chat/updateChatbotConfig', 
   }
 })
 
+export const fetchAnalytics = createAsyncThunk('chat/fetchAnalytics', async (_, { rejectWithValue }) => {
+  try {
+    const response = await api.get('/metrics') 
+    return response.metrics 
+  } catch (error) {
+    return rejectWithValue(error.response.data.message)
+  }
+})
+
 const chatSlice = createSlice({
   name: 'chat',
   initialState: {
     chats: [],
     activeChat: null,
-    teamMembers: [],
+
     chatbotConfig: null,
     missedChatTimeout: null,
     loading: false,
@@ -123,18 +123,6 @@ const chatSlice = createSlice({
         state.loading = false
         state.error = action.payload
       })
-      .addCase(fetchTeamMembers.pending, (state) => {
-        state.loading = true
-        state.error = null
-      })
-      .addCase(fetchTeamMembers.fulfilled, (state, action) => {
-        state.loading = false
-        state.teamMembers = action.payload
-      })
-      .addCase(fetchTeamMembers.rejected, (state, action) => {
-        state.loading = false
-        state.error = action.payload
-      })
       .addCase(updateTicket.pending, (state) => {
         state.loading = true
         state.error = null
@@ -159,7 +147,18 @@ const chatSlice = createSlice({
         state.loading = false
         state.error = action.payload
       })
-      
+      .addCase(fetchAnalytics.pending, (state) => {
+        state.loading = true
+        state.error = null
+      })
+      .addCase(fetchAnalytics.fulfilled, (state, action) => {
+        state.loading = false
+        state.analytics = action.payload
+      })
+      .addCase(fetchAnalytics.rejected, (state, action) => {
+        state.loading = false
+        state.error = action.payload
+      })
   },
 })
 

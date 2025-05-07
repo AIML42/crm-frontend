@@ -1,0 +1,74 @@
+.analytics-page {
+    display: flex;
+    /* height: 100vh; */
+    background-color: #f8f9fa;
+    
+  }
+  
+  .analytics-page .main-content {
+    flex: 1;
+    padding: 20px;
+    height: 100vh;
+    overflow-y: auto;
+  }
+  
+  .analytics-page h3 {
+    font-size: 18px;
+    color: #6A6B70;
+    margin-bottom: 20px;
+  }
+  
+  .analytics-page .analytics-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .analytics-page .analytics-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    width: 80%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  .analytics-page .analytics-chart-item {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    width: 80%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .analytics-page .analytics-chart-item h4,
+  .analytics-page .analytics-item h4 {
+    font-size: 20px;
+    color: #34C759;
+    margin-bottom: 15px;
+  }
+  
+  .analytics-page .analytics-item p {
+    font-size: 12px;
+    color: #5f6368;
+    margin-bottom: 15px;
+  }
+  
+  .analytics-page .metric-value {
+    font-size: 24px;
+    color: #34C759;
+    font-weight: bold;
+  }
+  
+  .analytics-page .progress-circle {
+    display: flex;
+    justify-content: center;
+    /* margin-top: 20px; */
+  }
+  
+  .analytics-page canvas {
+    max-height: 200px;
+    width: 100%;
+  }

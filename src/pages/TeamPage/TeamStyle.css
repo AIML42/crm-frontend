@@ -1,0 +1,202 @@
+.team-page {
+    display: flex;
+    height: 100vh;
+    background-color: #f8f9fa;
+  }
+  
+  .team-page .main-content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .team-page h3 {
+    font-size: 18px;
+    color: #6A6B70; /* Heading color */
+    margin-bottom: 20px;
+
+    padding: 10px 0;
+  }
+  
+  .team-page .team-list-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .team-page .team-list {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .team-page .team-header {
+    display: grid;
+    grid-template-columns: 2fr 2fr 3fr 1fr 1fr; /* Adjusted for new columns */
+    padding: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    font-weight: bold;
+    color: #184E7F;
+    border-top: 1px solid #6A6A6A; /* Top border */
+    border-bottom: 1px solid #6A6A6A; /* Bottom border */
+  }
+  
+  .team-page .header-full-name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .team-page .team-row {
+    display: grid;
+    grid-template-columns: 2fr 2fr 3fr 1fr 1fr; /* Adjusted for new columns */
+    padding: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    align-items: center;
+  }
+  
+  .team-page .team-row:last-child {
+    border-bottom: none;
+  }
+  
+  .team-page .team-row span {
+    font-size: 14px;
+    color: #202124;
+  }
+  
+  .team-page .full-name {
+    display: flex;
+    align-items: center;
+    padding-left: 60px;
+    gap: 10px;
+  }
+  
+  .team-page .avatar {
+    width: 30px;
+    height: 30px;
+    background-color: #1A73E8; /* Avatar color */
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .team-page .actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .team-page .action-icon {
+    cursor: pointer;
+    color: #5f6368;
+    font-size: 20px;
+  }
+  
+  .team-page .action-icon:hover {
+    color: #1A73E8;
+  }
+  
+  .team-page .error {
+    color: #FF0000;
+    padding: 10px;
+  }
+  
+  .team-page .create-button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+  
+  .team-page .create-button {
+    padding: 8px 16px; /* Smaller button */
+    background-color: #184E7F; /* Button color */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .team-page .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    
+  }
+  
+  .team-page .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 50%;
+    max-width: 90%;
+  }
+  
+  .team-page .modal-content h4 {
+    font-size: 23px;
+    color: #232323;
+    margin-bottom: 20px;
+  }
+  
+  .team-page .modal-content p {
+    font-size: 14px;
+    color: #202124;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .team-page .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .team-page .form-group label {
+    display: block;
+    font-size: 14px;
+    color: #6A6B70;
+    margin-bottom: 9px;
+  }
+  
+  .team-page .form-group input,
+  .team-page .form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #FFFFFF;
+  }
+  
+  .team-page .modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  
+  .team-page .modal-buttons button {
+    padding: 8px 28px;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+  }
+  
+  .team-page .modal-buttons button:first-child {
+    background-color: #e0e0e0;
+    color: #202124;
+  }
+  
+  .team-page .modal-buttons button:last-child {
+    background-color: #1A73E8;
+    color: #fff;
+  }

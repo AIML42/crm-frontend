@@ -19,6 +19,21 @@ export const login = createAsyncThunk('auth/login', async (data, { rejectWithVal
   }
 })
 
+export const fetchCurrentUser = createAsyncThunk(
+  'auth/currentUser',
+  async (_, { rejectWithValue, getState }) => {
+    try {
+      const { token } = getState().auth;
+      if (!token) return rejectWithValue('No token available')
+      
+      const response = await api.get('/auth/current-user')
+      return response.user;
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
+  }
+);
+
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
@@ -56,6 +71,9 @@ const authSlice = createSlice({
       })
       .addCase(login.fulfilled, (state, action) => {
         state.loading = false
+        // console.log('Login action payload:', action.payload)
+        // console.log('Login action payload user:', action.payload.user)
+        // console.log('Login action payload token:', action.payload.token)
         state.user = action.payload.user
         state.token = action.payload.token
         localStorage.setItem('token', action.payload.token)
@@ -63,6 +81,19 @@ const authSlice = createSlice({
       .addCase(login.rejected, (state, action) => {
         state.loading = false
         state.error = action.payload
+      })
+
+      .addCase(fetchCurrentUser.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchCurrentUser.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload;
+      })
+      .addCase(fetchCurrentUser.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       })
   },
 })

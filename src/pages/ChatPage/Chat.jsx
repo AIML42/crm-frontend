@@ -4,12 +4,14 @@ import { useLocation, Link } from 'react-router-dom'
 import { Icon } from "@iconify/react"
 import { toast } from 'react-toastify'
 import Sidebar from '../../components/Sidebar/Sidebar'
-import { fetchChats, fetchChatMessages, sendMessage, fetchTeamMembers, updateTicket, setActiveChat, fetchChatbotConfig} from '../../redux/chatSlice'
+import { fetchChats, fetchChatMessages, sendMessage, updateTicket, setActiveChat, fetchChatbotConfig} from '../../redux/chatSlice'
 import './ChatStyle.css'
+import { fetchTeamMembers } from '../../redux/teamSlice'
 
 const Chat = () => {
   const dispatch = useDispatch()
-  const { chats, activeChat, teamMembers, chatbotConfig, missedChatTimeout, loading, error} = useSelector((state) => state.chat)
+  const { chats, activeChat, chatbotConfig, missedChatTimeout, loading, error} = useSelector((state) => state.chat)
+  const { teamMembers } = useSelector((state) => state.team)
   const location = useLocation()
   const [message, setMessage] = useState('')
   const [selectedTeamMember, setSelectedTeamMember] = useState('')

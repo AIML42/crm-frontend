@@ -42,7 +42,7 @@ const Chatbot = () => {
       setCustomizeMessage(chatbotConfig.customizeMessage || 'How can I help you?')
       setWelcomeMessage(chatbotConfig.welcomeMessage || "Want to chat about Hubly? I'm a chatbot here to help you find your way.")
       setIntroductionForm(chatbotConfig.introductionForm || { name: true, phone: true, email: true })
-      const totalSeconds = chatbotConfig.missedChatTimeout ? Math.floor(chatbotConfig.missedChatTimeout / 1000) : 0
+      const totalSeconds = chatbotConfig.missedChatTimeout ? Math.floor(chatbotConfig.missedChatTimeout / 1000) : 3600
       setMissedChatTimeout({
         days: Math.floor(totalSeconds / (24 * 60 * 60)),
         hours: Math.floor((totalSeconds % (24 * 60 * 60)) / (60 * 60)),
@@ -93,9 +93,14 @@ const Chatbot = () => {
               <span>Hubly</span>
             </div>
             <div className="chatbot-messages">
+              <div className="message-with-icon">
+              <img style={{width:30, height:30}} src={hubly} alt="" />
               <div className="message bot">
-                <p>{welcomeMessage}</p>
+              
+                <p> {customizeMessage}</p>
               </div>
+              </div>
+              
 
               <div className="introduction-form">
               <h4>INTRODUCTION</h4>
@@ -117,6 +122,15 @@ const Chatbot = () => {
               <input type="text" placeholder="Write a message" disabled />
               <Icon icon="mdi:send" className="send-icon" />
             </div>
+            
+           
+            
+          </div>
+          
+          <div className="chat-welcome-message">
+          <img style={{width:40, height:40}} src={hubly} alt="" />
+          <Icon icon='system-uicons:cross'></Icon>
+          <p>{welcomeMessage}</p>
           </div>
         </div>
         <div className="config-section">
@@ -210,6 +224,7 @@ const Chatbot = () => {
             <p>{welcomeMessage.length}/60</p>
           </div>
           <div className="config-item">
+            <div className="timer-container">
             <h4>Missed chat timer</h4>
             <div className="timer-inputs">
               <div className="timer-field">
@@ -251,8 +266,10 @@ const Chatbot = () => {
                 />
                 <label>Seconds</label>
               </div>
+              
             </div>
             <button className="save-button" onClick={handleSave}>SAVE</button>
+            </div>
           </div>
         </div>
       </div>

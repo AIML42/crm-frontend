@@ -1,0 +1,132 @@
+.edit-profile-page {
+    display: flex;
+    height: 100vh;
+    background-color: #f8f9fa;
+}
+
+.edit-profile-page .main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.edit-profile-page h3 {
+    font-size: 18px;
+    color: #6A6B70;
+    /* Heading color */
+    margin-bottom: 20px;
+
+    padding: 10px 0;
+}
+
+.edit-profile-page .form-container {
+    background-color: #FAFBFC;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 96%;
+}
+
+.edit-profile-page .form-container .header-with-borders {
+    position: relative;
+    margin-bottom: 20px; 
+}
+
+.edit-profile-page .form-container h4 {
+    font-size: 16px;
+    color: #184E7F;
+    padding-bottom: 10px;
+    margin-bottom: 0;
+    width: 10%;
+    border-bottom: 2px solid #184E7F;
+    position: relative;
+    z-index: 2;
+}
+
+.edit-profile-page .form-container .edit-profile-border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-bottom: 1px solid #6A6A6A;
+    z-index: 1;
+}
+
+.edit-profile-page .form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.edit-profile-page .form-group label {
+    font-size: 14px;
+    color: #6A6B70;
+    margin-bottom: 10px;
+   
+}
+
+.edit-profile-page .form-group-input{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+
+.edit-profile-page .form-group input {
+    
+    width: 40%;
+    padding: 8px;
+    border: 1px solid #6A6A6A;
+    border-radius: 10px;
+    font-size: 14px;
+   
+}
+
+.edit-profile-page .tip-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.edit-profile-page .tip-icon svg {
+    font-size: 16px;
+    color: #6A6B70;
+}
+
+.edit-profile-page .tip-icon .tooltip {
+    visibility: hidden;
+    width: 200px;
+    background-color: #F3F3F3;
+    color: #7C7C7C;
+    text-align: center;
+    padding: 5px;
+    border-radius: 4px;
+    position: absolute;
+    z-index: 1;
+    top: -10px;
+    left: 25px;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.edit-profile-page .tip-icon:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.edit-profile-page .button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.edit-profile-page .button-container button {
+    padding: 8px 35px;
+    background-color: #184E7F;
+    /* Button color */
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
