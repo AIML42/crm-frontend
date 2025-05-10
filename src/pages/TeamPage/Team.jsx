@@ -75,6 +75,19 @@ const Team = () => {
 
   // Handle form submission for create/edit
   const handleSubmit = () => {
+    
+    // console.log(formData) 
+    if(formData.email){
+      // console.log('inside form data function')
+
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+        toast.error('Valid mail is required')
+        return 
+      }
+    }
+
+  
+
     if (isEditing) {
       dispatch(updateTeamMember({ id: currentMember._id, memberData: formData }))
         .then(() => {
@@ -102,6 +115,8 @@ const Team = () => {
       })
       .catch(() => toast.error('Failed to delete team member'))
   }
+
+  // console.log(formData)
 
   return (
     <div className="team-page">
