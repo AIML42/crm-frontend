@@ -6,6 +6,7 @@ import { Icon } from "@iconify/react";
 import Features from '../../components/LandingPagesComponents/Features';
 import Plans from '../../components/LandingPagesComponents/Plans';
 import Footer from '../../components/Footer/Footer';
+import ChatbotLanding from '../../components/ChatbotLandingWidget/ChatbotLanding';
 
 const Landing = () => {
 
@@ -34,8 +35,7 @@ const Landing = () => {
                     </div>
                     <img src={landingPageOne} alt="" />
                 </div>
-
-
+                
                 <div className="companiesIcons">
                     {companiesNames.map((name, index) => (
                         <div key={index}>
@@ -49,6 +49,7 @@ const Landing = () => {
             <Features/>
             <Plans/>
             <Footer/>
+            <ChatbotLanding/>
         </>
     )
 }

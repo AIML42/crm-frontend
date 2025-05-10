@@ -4,27 +4,27 @@ import { useLocation, Link } from 'react-router-dom'
 import { Icon } from "@iconify/react"
 import { toast } from 'react-toastify'
 import Sidebar from '../../components/Sidebar/Sidebar'
-import { fetchChats, fetchChatMessages, sendMessage, updateTicket, setActiveChat, fetchChatbotConfig} from '../../redux/chatSlice'
+import { fetchChats, fetchChatMessages, sendMessage, updateTicket, setActiveChat, fetchChatbotConfig } from '../../redux/chatSlice'
 import './ChatStyle.css'
 import { fetchTeamMembers } from '../../redux/teamSlice'
 
 const Chat = () => {
   const dispatch = useDispatch()
-  const { chats, activeChat, chatbotConfig, missedChatTimeout, loading, error} = useSelector((state) => state.chat)
+  const { chats, activeChat, chatbotConfig, missedChatTimeout, loading, error } = useSelector((state) => state.chat)
   const { teamMembers } = useSelector((state) => state.team)
   const location = useLocation()
   const [message, setMessage] = useState('')
   const [selectedTeamMember, setSelectedTeamMember] = useState('')
   const [ticketStatus, setTicketStatus] = useState('Select status')
   const [teammateDropdownOpen, setTeammateDropdownOpen] = useState(false);
-const [statusDropdownOpen, setStatusDropdownOpen] = useState(false);
+  const [statusDropdownOpen, setStatusDropdownOpen] = useState(false);
 
-const [originalTeamMember, setOriginalTeamMember] = useState('') // Add this
-const [originalStatus, setOriginalStatus] = useState('Open') // Add this
-const [showModal, setShowModal] = useState(false) // Add this
-const [modalMessage, setModalMessage] = useState('') // Add this
-const [modalAction, setModalAction] = useState(null) // Add this
-const [isMissedChat, setIsMissedChat] = useState(false) // Add this
+  const [originalTeamMember, setOriginalTeamMember] = useState('') // Add this
+  const [originalStatus, setOriginalStatus] = useState('Open') // Add this
+  const [showModal, setShowModal] = useState(false) // Add this
+  const [modalMessage, setModalMessage] = useState('') // Add this
+  const [modalAction, setModalAction] = useState(null) // Add this
+  const [isMissedChat, setIsMissedChat] = useState(false) // Add this
 
   // Get ticketId from URL query parameter
   const query = new URLSearchParams(location.search)
@@ -34,7 +34,7 @@ const [isMissedChat, setIsMissedChat] = useState(false) // Add this
   useEffect(() => {
     dispatch(fetchChats())
     dispatch(fetchTeamMembers())
-    dispatch(fetchChatbotConfig()) 
+    dispatch(fetchChatbotConfig())
   }, [dispatch])
 
   // Fetch messages for the selected chat based on ticketId
@@ -56,7 +56,7 @@ const [isMissedChat, setIsMissedChat] = useState(false) // Add this
         }
       }
     }
-    
+
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [teammateDropdownOpen, statusDropdownOpen]);
@@ -76,7 +76,7 @@ const [isMissedChat, setIsMissedChat] = useState(false) // Add this
     // console.log(missedChatTimeout)
     // console.log(activeChat, activeChat.messages, missedChatTimeout)
     if (activeChat && activeChat.messages.length > 0 && missedChatTimeout) {
-      
+
       const lastMessage = activeChat.messages[activeChat.messages.length - 1]
       // console.log('lastMessage', lastMessage)
       const lastMessageTime = new Date(lastMessage.timestamp).getTime()
@@ -116,10 +116,10 @@ const [isMissedChat, setIsMissedChat] = useState(false) // Add this
     }
     setSelectedTeamMember(newTeamMember)
   }
-  
+
   const handleStatusChange = (value) => {
     console.log('Status changed:', value)
-    
+
     const newStatus = value
     console.log(newStatus, originalStatus)
     if (newStatus !== originalStatus) {
@@ -129,7 +129,7 @@ const [isMissedChat, setIsMissedChat] = useState(false) // Add this
         setTicketStatus(newStatus)
         setOriginalStatus(newStatus)
         dispatch(updateTicket({ ticketId: activeChat._id, status: newStatus.toLowerCase(), assignedTo: selectedTeamMember }))
-          .then(() => toast.success('Ticket status updated'))
+          .then(() => {toast.success('Ticket status updated'); })
           .catch(() => toast.error('Failed to update ticket status'))
       })
       setShowModal(true)
@@ -203,28 +203,28 @@ const [isMissedChat, setIsMissedChat] = useState(false) // Add this
                 <Icon icon="ph:house-light" fontSize={15} />
               </div>
               <div className="message-section-main">
-              <div className="chat-date">
-                <span className="date-text">{formatDate(activeChat.firstMessageAt)}</span>
-              </div>
-              {isMissedChat && <p className="missed-chat-warning">Replying to missed chat</p>} {/* Add this */}
-              <div className="chat-messages">
-                {activeChat.messages.map((msg) => (
-                  <div key={msg._id} className={`message ${msg.sender}`}>
-                    <div className="message-avatar">{getInitial(msg.sender === 'user' ? activeChat.userInfo.name : msg.sender)}</div>
-                    <p>{msg.content}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="chat-input">
-                <input
-                  type="text"
-                  placeholder="type here"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                />
-                <button onClick={handleSendMessage}><Icon icon="garden:play-26" /></button>
-              </div>
+                <div className="chat-date">
+                  <span className="date-text">{formatDate(activeChat.firstMessageAt)}</span>
+                </div>
+                {isMissedChat && <p className="missed-chat-warning">Replying to missed chat</p>} {/* Add this */}
+                <div className="chat-messages">
+                  {activeChat.messages.map((msg) => (
+                    <div key={msg._id} className={`message ${msg.sender}`}>
+                      <div className="message-avatar">{getInitial(msg.sender === 'user' ? activeChat.userInfo.name : msg.sender)}</div>
+                      <p>{msg.content}</p>
+                    </div>
+                  ))}
+                </div>
+                <div className="chat-input">
+                  <input
+                    type="text"
+                    placeholder="type here"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+                  />
+                  <button onClick={handleSendMessage}><Icon icon="garden:play-26" /></button>
+                </div>
               </div>
               {ticketStatus === 'Resolved' && <p className="chat-closed-message">This chat has been closed</p>} {/* Add this */}
             </>
@@ -238,95 +238,105 @@ const [isMissedChat, setIsMissedChat] = useState(false) // Add this
           {activeChat ? (
             <>
               <div className="details-section-chatid">
-                 <div className="message-avatar">{getInitial(activeChat.userInfo.name)}</div>
-                 <div className="chat-indicator">Chat</div>
+                <div className="message-avatar">{getInitial(activeChat.userInfo.name)}</div>
+                <div className="chat-indicator">Chat</div>
               </div>
-              
+
               <div className="details-content">
                 <h4>Details</h4>
-                
+
                 <div className="details-content-icon">
-                <Icon style={{fontSize:20,}} icon='mdi:contact-outline'></Icon> 
-                <p>{activeChat.userInfo.name}</p>
+                  <Icon style={{ fontSize: 20, }} icon='mdi:contact-outline'></Icon>
+                  <p>{activeChat.userInfo.name}</p>
                 </div>
                 <div className="details-content-icon">
-                <Icon style={{fontSize:20,}} icon='mdi-light:phone'></Icon> 
-                <p>{activeChat.userInfo.phone}</p>
+                  <Icon style={{ fontSize: 20, }} icon='mdi-light:phone'></Icon>
+                  <p>{activeChat.userInfo.phone}</p>
                 </div>
                 <div className="details-content-icon">
-                <Icon style={{fontSize:20,}} icon='lets-icons:message-light'></Icon> 
-                <p>{activeChat.userInfo.email}</p>
+                  <Icon style={{ fontSize: 20, }} icon='lets-icons:message-light'></Icon>
+                  <p>{activeChat.userInfo.email}</p>
                 </div>
-                
+
               </div>
-              
+
               <div className="teammates-section">
 
-  <h4>Teammates</h4>
-  <div className="custom-select">
-    <div className="select-selected" onClick={() => setTeammateDropdownOpen(!teammateDropdownOpen)}>
-  
-      {selectedTeamMember !== 'Select team member' &&(<div className="select-avatar">{getInitial(teamMembers.find(m => m._id === selectedTeamMember)?.firstName || '')}</div>)}
-      {selectedTeamMember !== 'Select team member' &&(<span>{teamMembers.find(m => m._id === selectedTeamMember)?.firstName} {teamMembers.find(m => m._id === selectedTeamMember)?.lastName}</span>)}
-      {selectedTeamMember === 'Select team member' && <span>{selectedTeamMember}</span>}
-      {/* <span>{selectedTeamMember}</span> */}
-      <Icon icon="mdi:chevron-down" className="dropdown-icon" />
-    </div>
-    {teammateDropdownOpen && (
-      <div className="select-items">
-        {teamMembers.map((member) => (
-          <div 
-            key={member._id} 
-            className="select-item" 
-            onClick={() => {
-              setSelectedTeamMember(member._id);
-              setTeammateDropdownOpen(false);
-              handleTeamMemberChange(member._id);
-            }}
-          >
-            <div className="select-avatar">{getInitial(member.firstName)}</div>
-            <span>{member.firstName} {member.lastName}</span>
-          </div>
-        ))}
-      </div>
-    )}
-  </div>
-</div>
+                <h4>Teammates</h4>
+                <div className="custom-select">
+                  <div className="select-selected" onClick={() => setTeammateDropdownOpen(!teammateDropdownOpen)}>
 
-<div className="status-section">
-  <h4>Ticket status</h4>
-  <div className="simple-select">
-    <div className="select-selected" onClick={() => setStatusDropdownOpen(!statusDropdownOpen)}>
-      <span>{ticketStatus}</span>
-      <Icon icon="mdi:chevron-down" className="dropdown-icon" />
-    </div>
-    {statusDropdownOpen && (
-      <div className="select-items">
-        <div className="select-item" onClick={() => {setTicketStatus("Resolved"); setStatusDropdownOpen(false); handleStatusChange('Resolved')}}>Resolved</div>
-        <div className="select-item" onClick={() => {setTicketStatus("Unresolved"); setStatusDropdownOpen(false); handleStatusChange('Unresolved')}}>Unresolved</div>
-      </div>
-    )}
-  </div>
-</div>
+                    {selectedTeamMember !== 'Select team member' && (<div className="select-avatar">{getInitial(teamMembers.find(m => m._id === selectedTeamMember)?.firstName || '')}</div>)}
+                    {selectedTeamMember !== 'Select team member' && (<span>{teamMembers.find(m => m._id === selectedTeamMember)?.firstName} {teamMembers.find(m => m._id === selectedTeamMember)?.lastName}</span>)}
+                    {selectedTeamMember === 'Select team member' && <span>{selectedTeamMember}</span>}
+                    {/* <span>{selectedTeamMember}</span> */}
+                    <Icon icon="mdi:chevron-down" className="dropdown-icon" />
+                  </div>
+                  {teammateDropdownOpen && (
+                    <div className="select-items">
+                      {teamMembers.map((member) => (
+                        <div
+                          key={member._id}
+                          className="select-item"
+                          onClick={() => {
+                            if (ticketStatus === 'Select status') {
+                              toast.error('Select status')
+                              return
+                            }
+                            setSelectedTeamMember(member._id);
+                            setTeammateDropdownOpen(false);
+                            handleTeamMemberChange(member._id);
+                          }}
+                        >
+                          <div className="select-avatar">{getInitial(member.firstName)}</div>
+                          <span>{member.firstName} {member.lastName}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="status-section">
+                <h4>Ticket status</h4>
+                <div className="simple-select">
+                  <div className="select-selected" onClick={() => setStatusDropdownOpen(!statusDropdownOpen)}>
+                    <span>{ticketStatus}</span>
+                    <Icon icon="mdi:chevron-down" className="dropdown-icon" />
+                  </div>
+                  {statusDropdownOpen && (
+                    <div className="select-items">
+                      <div className="select-item" onClick={() => { setTicketStatus("Resolved"); setStatusDropdownOpen(false); handleStatusChange('Resolved') }}>Resolved</div>
+                      <div className="select-item" onClick={() => { setTicketStatus("Unresolved"); setStatusDropdownOpen(false); handleStatusChange('Unresolved') }}>Unresolved</div>
+                    </div>
+                  )}
+                </div>
+              </div>
 
               {/* <button className="update-ticket-button" onClick={handleUpdateTicket}>
                 Update Ticket
               </button> */}
 
               {showModal && ( /* Add this */
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <p>{modalMessage}</p>
-            <div className="modal-buttons">
-              <button onClick={() => setShowModal(false)}>Cancel</button>
-              <button onClick={() => {
-                modalAction()
-                setShowModal(false)
-              }}>Confirm</button>
-            </div>
-          </div>
-        </div>
-      )}
+                <div className="modal-overlay">
+                  <div className="modal-content">
+                    <p>{modalMessage}</p>
+                    <div className="modal-buttons">
+                      <button onClick={() => setShowModal(false)}>Cancel</button>
+                      <button onClick={() => {
+
+                        if (selectedTeamMember === 'Select team member') {
+                          toast.error('Select a team member')
+                          return
+                        }
+
+                        modalAction()
+                        setShowModal(false)
+                      }}>Confirm</button>
+                    </div>
+                  </div>
+                </div>
+              )}
             </>
           ) : (
             <p>Select a chat to view details</p>

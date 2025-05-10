@@ -69,10 +69,16 @@ const EditProfile = () => {
         const payload = {
             firstName: formData.firstName,
             email: formData.email,
+            lastName: formData.lastName
         }
         // Only include password in payload if it's not empty
         if (formData.password) {
+            if (formData.password !== formData.confirmPassword){
+                toast.error('Password mismatch')
+                return 
+            }
             payload.password = formData.password
+            payload.confirmPassword = formData.confirmPassword
         }
 
         dispatch(updateTeamMember({ id: user.id, memberData: payload }))
@@ -83,7 +89,10 @@ const EditProfile = () => {
                 const emailChanged = formData.email !== originalData.email
                 const passwordChanged = formData.password !== ''
 
+               
+
                 if (emailChanged || passwordChanged) {
+
                     // Log out
                     localStorage.removeItem('token')
                     dispatch(logout())
@@ -93,6 +102,9 @@ const EditProfile = () => {
             })
             .catch(() => toast.error('Failed to update profile'))
     }
+
+    // Printing logs
+    console.log('User is here', user)
 
     return (
         <div className="edit-profile-page">

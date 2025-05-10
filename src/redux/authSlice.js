@@ -71,9 +71,9 @@ const authSlice = createSlice({
       })
       .addCase(login.fulfilled, (state, action) => {
         state.loading = false
-        // console.log('Login action payload:', action.payload)
-        // console.log('Login action payload user:', action.payload.user)
-        // console.log('Login action payload token:', action.payload.token)
+        console.log('Login action payload:', action.payload)
+        console.log('Login action payload user:', action.payload.user)
+        console.log('Login action payload token:', action.payload.token)
         state.user = action.payload.user
         state.token = action.payload.token
         localStorage.setItem('token', action.payload.token)

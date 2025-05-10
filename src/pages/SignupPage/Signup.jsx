@@ -57,6 +57,7 @@ const Signup = () => {
         firstName: formData.firstName,
         email: formData.email,
         password: formData.password,
+        lastName: formData.lastName,
         confirmPassword: formData.confirmPassword,
       })).unwrap()
       toast.success('Signup successful')

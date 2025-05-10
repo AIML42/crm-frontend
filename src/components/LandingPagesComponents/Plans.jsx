@@ -24,7 +24,7 @@ const Plans = () => {
                     <div className='planOneDetails'>
                         
                         {planOnePoints.map((point, index) => (
-                            <div className="planPoints">
+                            <div className="planPoints" key={index}>
                             <img src={checkIcon} alt="" />
                             <h4>{point}</h4>
                         </div>
@@ -44,7 +44,7 @@ const Plans = () => {
                     <div className='planTwoDetails'>
 
                     {planTwoPoints.map((point, index) => (
-                            <div className="planPoints">
+                            <div className="planPoints" key={index}>
                             <img src={checkIcon} alt="" />
                             <h4>{point}</h4>
                         </div>

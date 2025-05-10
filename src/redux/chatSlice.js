@@ -11,6 +11,16 @@ export const fetchChats = createAsyncThunk('chat/fetchChats', async (_, { reject
   }
 })
 
+export const sendChats = createAsyncThunk('chat/sendChats', async (config, { rejectWithValue }) => {
+  try {
+    const response = await api.post('/chats', config)
+    // console.log('API Response:', response.data); 
+    return response.chat
+  } catch (error) {
+    return rejectWithValue(error.response.data.message)
+  }
+})
+
 export const fetchChatMessages = createAsyncThunk('chat/fetchChatMessages', async (chatId, { rejectWithValue }) => {
   try {
     const response = await api.get(`/chats/${chatId}`)
