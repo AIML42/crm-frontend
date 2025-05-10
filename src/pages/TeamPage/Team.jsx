@@ -108,7 +108,7 @@ const Team = () => {
   // Handle delete confirmation
   const handleDelete = () => {
     console.log('Deleting member:', currentMember)
-    dispatch(deleteTeamMember('68185c9a8e0747f7d105a4aa'))
+    dispatch(deleteTeamMember(currentMember._id))
       .then(() => {
         toast.success('Team member deleted successfully')
         setShowDeleteModal(false)
