@@ -24,7 +24,7 @@ const Chatbot = () => {
   })
   const [missedChatTimeout, setMissedChatTimeout] = useState({
     days: 0,
-    hours: 0,
+    hours: 1,
     minutes: 0,
     seconds: 0,
   })
@@ -42,7 +42,12 @@ const Chatbot = () => {
       setCustomizeMessage(chatbotConfig.customizeMessage || 'How can I help you?')
       setWelcomeMessage(chatbotConfig.welcomeMessage || "Want to chat about Hubly? I'm a chatbot here to help you find your way.")
       setIntroductionForm(chatbotConfig.introductionForm || { name: true, phone: true, email: true })
-      const totalSeconds = chatbotConfig.missedChatTimeout ? Math.floor(chatbotConfig.missedChatTimeout / 1000) : 3600
+      // const totalSeconds = chatbotConfig.missedChatTimeout ? Math.floor(chatbotConfig.missedChatTimeout / 1000) : 3600
+
+      // Improved timeout calculation
+    const timeoutMs = chatbotConfig.missedChatTimeout ?? 3600000; // Default to 1 hour in ms
+    const totalSeconds = Math.floor(timeoutMs / 1000);
+
       setMissedChatTimeout({
         days: Math.floor(totalSeconds / (24 * 60 * 60)),
         hours: Math.floor((totalSeconds % (24 * 60 * 60)) / (60 * 60)),
@@ -80,6 +85,8 @@ const Chatbot = () => {
       [field]: !prev[field],
     }))
   }
+
+// console.log(missedChatTimeout, headerColor, backgroundColor)
 
   return (
     <div className="chatbot-page">

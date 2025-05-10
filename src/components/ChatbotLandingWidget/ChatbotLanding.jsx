@@ -121,19 +121,21 @@ const ChatbotLanding = () => {
 
     dispatch(sendChats(payload))
       .then((response) => {
+  
         const newChatId = response.payload.id
         setChatId(newChatId)
         setShowForm(false)
         toast.success('Chat created successfully')
+        
       })
-      .catch(() => toast.error('Failed to create chat'))
+      .catch(() => {toast.error('Failed to create chat, create admin first') })
   }
 
   // Placeholder for sending subsequent messages (assuming API exists)
   const sendMessageToChat = (message) => {
     // Assuming an API like POST /api/chats/:chatId/messages
     const payload = {message: message, sender: 'user'}
-    fetch(`http://localhost:4000/api/chats/${chatId}/message`, {
+    fetch(`https://crm-backend-h4d5.onrender.com/api/chats/${chatId}/message`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -158,9 +160,9 @@ const ChatbotLanding = () => {
     <div className="chatbot-landing">
       {!isExpanded ? (
         <div className="chatbot-collapsed" onClick={handleExpand}>
-          <img style={{ width: 40, height: 40 }} src={hubly} alt="Hubly Icon" />
-          <p>{welcomeMessage}</p>
-          <Icon icon="system-uicons:cross" className="close-icon" />
+          <img className='icon-image' style={{ width: 50, height: 50 }} src={hubly} alt="Hubly Icon" />
+          <p><br />{welcomeMessage}</p>
+          {/* <Icon icon="system-uicons:cross" className="close-icon" /> */}
         </div>
       ) : (
         <div className="chatbot-preview" style={{ backgroundColor }}>
