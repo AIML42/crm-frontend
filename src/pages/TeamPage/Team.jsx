@@ -75,6 +75,11 @@ const Team = () => {
 
   // Handle form submission for create/edit
   const handleSubmit = () => {
+
+    if(!formData.firstName || !formData.email){
+      toast.error('Values are missing')
+      return 
+    }
     
     // console.log(formData) 
     if(formData.email){
